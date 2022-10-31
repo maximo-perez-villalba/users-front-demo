@@ -9,7 +9,7 @@ Frontend. Implementación en angular del cliente de API RESTfull sobre el recurs
 
 ## Traza de implementación
 ```
-ng new alquilando-frontend
+ng new users-front-demo
 npm install bootstrap
 ng g class models/usuario
 ng g class models/usuario-data
