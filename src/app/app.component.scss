@@ -1,0 +1,24 @@
+header
+{
+  margin-bottom: 40px;
+}
+main
+{
+  .encabezado
+  {
+    margin-bottom: 0.5rem;
+  }
+  table
+  {
+    max-width: 100%;
+    tr:hover
+    {
+      cursor: pointer;
+    }
+  }
+  .btn-group
+  {
+    display: flex;
+    width: 100%;
+  }
+}

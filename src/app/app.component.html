@@ -1,0 +1,93 @@
+<header>
+  <nav class="navbar navbar-dark bg-dark">
+    <span class="navbar-brand  mb-0 h1">Alquilando.com</span>
+  </nav>
+</header>
+
+<main class="container">
+    <div class="row justify-content-center">
+      <div class="col-12 col-lg-10">
+        <div class="row">
+
+          <div class="col-12 col-md-8">
+            <div class="d-flex encabezado">
+              <h4>Listado de usuarios</h4>
+            </div>
+            <table class="table table-bordered table-hover">
+              <thead class="thead-dark">
+                <th>Nombre y apellido</th>
+                <th>Email</th>
+                <th>Usuario</th>
+              </thead>
+              <tbody>
+                <tr
+                  *ngFor="let u of usuarios"
+                  (click)="select( u )"
+                  [class.table-primary]="u.id == selected.id">
+                  <td>{{u.nombre}} {{u.apellido}}</td>
+                  <td>{{u.email}}</td>
+                  <td>{{u.usuario}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="col-12 col-md-4">
+            <div class="d-flex justify-content-between encabezado">
+              <h4>Controles</h4>
+              <button type="button" class="btn btn btn-light" (click)="controlNuevo()">Nuevo</button>
+            </div>
+            <div class="card">
+              <div class="card-body">
+                <div class="form-group">
+                  <input
+                    type="text"
+                    [(ngModel)]="selected.nombre"
+                    placeholder="Nombre"
+                    class="form-control">
+                </div>
+                <div class="form-group">
+                  <input
+                      type="text"
+                      [(ngModel)]="selected.apellido"
+                      placeholder="Apellido"
+                      class="form-control">
+                </div>
+                <div class="form-group">
+                  <input
+                      type="email"
+                      [(ngModel)]="selected.email"
+                      placeholder="Email"
+                      class="form-control">
+                </div>
+                <div class="form-group">
+                  <input
+                    type="text"
+                    [(ngModel)]="selected.usuario"
+                    placeholder="Usuario"
+                    class="form-control"
+                    [readOnly]="accion == 'editar' ">
+                </div>
+
+                <div class="form-group" *ngIf="accion == 'crear' ">
+                  <button type="button" class="btn btn-primary" (click)="guardar()">Guardar</button>
+                </div>
+                <div class="form-group" *ngIf="accion == 'editar' ">
+                  <div class="btn-group" role="group" aria-label="">
+                    <button type="button" class="btn btn-primary" (click)="actualizar()">Actualizar</button>
+                    <button type="button" class="btn btn-primary" (click)="borrar()">Borrar</button>
+                  </div>
+                </div>
+                <div *ngIf="hayError" class="alert alert-danger" role="alert">
+                  {{mensaje}}
+                </div>
+                <div *ngIf="estaActualizado" class="alert alert-success" role="alert">
+                  {{mensaje}}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</main>
